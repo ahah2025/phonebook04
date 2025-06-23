@@ -13,22 +13,22 @@ public class Phonebookcontroller {
 	//메소드일반
 	@RequestMapping(value="/list",method = {RequestMethod.GET,RequestMethod.POST})
 	public String list() {
-		System.out.println("2025-06-23 오후 5:5");
+		System.out.println("2025-06-23 오후 5:50");
 		
-		return "";
+		return "/WEB-INF/views/list.jsp";
 	}
 	
 	@RequestMapping(value="/wform",method = {RequestMethod.GET,RequestMethod.POST})
 	public String wform() {
-		System.out.println("wform");
+		System.out.println("수정폼 입니다 " +"\t" + "wform");
 		
-		return "/WEB-INF/views/phonebook.jsp";
+		return "/WEB-INF/views/wform.jsp";
 	}
 	
 	@RequestMapping(value="/mform",method = {RequestMethod.GET,RequestMethod.POST})
 	public String mform() {
-		System.out.println("mform");
+		System.out.println("등록폼 입니다");
 		
-		return "/WEB-INF/views/phonebook.jsp";
+		return "/WEB-INF/views/mform.jsp";
 	}
 }
