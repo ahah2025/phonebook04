@@ -9,11 +9,14 @@
 	</head>
 	<body>
 		<h1>등록폼</h1>
-		<form>
-			<table>
+		<form action="${pageContext.request.contextPath}/add" method="get">
+			<table border = "1">
 				<tr>
 					<td>이름</td>
 					<td><input type="text" name="name" value=""></td>
+					<td>핸드폰번호</td>
+					<td><input type="text" name="hp" value=""></td>
+					
 					<td>
 						<button type="">등록</button>
 					</td>
@@ -24,6 +27,6 @@
 		</form>	
 		
 		<br><br>
-		<a href="">메인으로 돌아가기</a>
+		${requestScope.pList}
 	</body>
 </html>
