@@ -14,6 +14,7 @@ import com.javaex.vo.PhonebookVO;
 @Controller
 public class Personcontroller {
 
+	//123 테스트
 	//필드
 	//생성자
 	//메소드gs	
