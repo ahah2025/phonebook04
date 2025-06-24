@@ -52,29 +52,29 @@ public class Personcontroller {
 		System.out.println(count);
 		
 		//리다이렉트 하는 방법 "redirect:" 앞쪽에 써준다
-		//http://localhost:8888/phonebook4/list
-		return "redirect:/list";
+		//http://localhost:8888/phonebook4/add
+		return "/mform";
 		
 	}	
 	
 	//삭제폼(삭제랑 헷갈리지 말것) 폼만 보여주면 됨
-	@RequestMapping(value="rform",method = {RequestMethod.GET,RequestMethod.POST})
-	public String removeForm() {
-		System.out.println("Personcontroller.removeForm()");
+	@RequestMapping(value="/wform",method = {RequestMethod.GET,RequestMethod.POST})
+	public String writeForm() {
+		System.out.println("Personcontroller.writeForm");
 
-		return "removeform";
+		return "wform";
 	}
 	
 	//삭제
-	@RequestMapping(value="remove",method = {RequestMethod.GET,RequestMethod.POST})
+	@RequestMapping(value="/mform",method = {RequestMethod.GET,RequestMethod.POST})
 	public String remove(@ModelAttribute PhonebookVO phonebookVO) {
-		System.out.println("Phonebookcontroller.remove()");
+		System.out.println("Personcontroller.mform()");
 		System.out.println(phonebookVO);
 		
 		PhonebookDAO phonebookDAO = new PhonebookDAO();
 		int a = phonebookDAO.phonebookDelete(phonebookVO);
 		System.out.println(a);
 		
-		return "redirect:/list";
+		return "redirect:/mform";
 	}	
 }
