@@ -75,6 +75,6 @@ public class Personcontroller {
 		int a = phonebookDAO.phonebookDelete(phonebookVO);
 		System.out.println(a);
 		
-		return "redirect:/mform";
+		return "/mform";
 	}	
 }
