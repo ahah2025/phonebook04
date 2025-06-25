@@ -14,27 +14,41 @@
 	
 		<form action="${pageContext.request.contextPath}/pbc"  method="get">
 			<label>이름(name)</label>
-			<input type="text" name="name" value="phonebook4">
+			<input type="text" name="name" value="">
 			<br>
 		
 			<label>핸드폰(hp)</label>
-			<input type="text" name="hp" value="phonebook4">
+			<input type="text" name="hp" value="">
 			<br>
 	
 			<label>회사(company)</label>
-			<input type="text" name="company" value="phonebook4">
+			<input type="text" name="company" value="">
 			<br>
 			
-			<label>액션</label>
-			<input type="text" name="no" value="phonebook4">
-			<input type="text" name="action" value="modify">
-			<br>
+
 			
 			<button>등록</button>
 		</form>
 		
 		<br><br>
-		${requestScope.pList}
+		
+		<c:forEach items="${requestScope.plist}" var="phonebookVO">
+			<table border="1" width="540px">
+				<tr>
+					<td>[${phonebookVO.personId}]</td>
+					<td>${phonebookVO.name}</td>
+					<td>${phonebookVO.hp}</td>
+					<td>${phonebookVO.company}</td>
+
+					
+					<td>
+						<a href="${pageContext.request.contextPath}/rform?no=${phonebookVO.personId}">삭제</a>
+					</td>
+				</tr>
+				
+			</table>
+			<br>
+		</c:forEach>
 		
 	
 	</body>

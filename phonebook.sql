@@ -21,7 +21,7 @@ create table person(
 );
 
 -- 테이블조회
-select  person_id,
+select  person_id as personId,
         name,
         hp,
         company
@@ -52,12 +52,12 @@ values(null, '강호동','010-3333-3333','02-3333-3002')
 
 -- 수정
 update person
-set name = '서장훈' , 
-     hp = '010-3333-4444',
-     company = '02-2222-3333' 
-where person_id = 1 
+set name = '이아름' , 
+     hp = '010-1111-1111',
+     company = '02-1111-1111' 
+where person_id = 6
 ;
 
 -- 삭제
 delete from person
-where person_id = 18 ;
+where person_id = 7 ;

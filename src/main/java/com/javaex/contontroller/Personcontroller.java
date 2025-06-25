@@ -2,20 +2,23 @@ package com.javaex.contontroller;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.javaex.dao.PhonebookDAO;
+import com.javaex.service.Personservice;
 import com.javaex.vo.PhonebookVO;
 
 @Controller
 public class Personcontroller {
 
-	//123 테스트
 	//필드
+	@Autowired
+	private Personservice personService;
+	
 	//생성자
 	//메소드gs	
 	//메소드일반
@@ -24,8 +27,7 @@ public class Personcontroller {
 	public String list(Model model) {
 		System.out.println("Personcontroller.list()");
 		
-		PhonebookDAO phonebookDAO = new PhonebookDAO();
-		List<PhonebookVO> phonebooklist = phonebookDAO.phonebookSelect();
+		List<PhonebookVO> phonebooklist = personService.exeGetPhonebookList();
 		System.out.println(phonebooklist);
 		
 		//*Model개념
@@ -37,7 +39,7 @@ public class Personcontroller {
 		//*views 개념
 		//DispatcherServlet 야!!
 		// "/WEB-INF/views/addlist.jsp" 에 포워드해
-		return "/WEB-INF/views/List.jsp";
+		return "modifyForm";
 	}
 	
 	//-방명록 글 저장
@@ -45,23 +47,18 @@ public class Personcontroller {
 	public String add(@ModelAttribute PhonebookVO phonebookVO) {
 					  //DispatcherServlet 야!!  Request 파라미터 값을 꺼내서
 					  //phonebookVO로 묶어줘	
-		System.out.println("add");
 	
-		System.out.println(phonebookVO);
-		PhonebookDAO phonebookDAO = new PhonebookDAO();
-		int count = phonebookDAO.phonebookInsert(phonebookVO);
-		System.out.println(count);
+		//Service 한테 시키는 일
+		personService.exePhonebookAdd(phonebookVO);
 		
-		//리다이렉트 하는 방법 "redirect:" 앞쪽에 써준다
-		//http://localhost:8888/phonebook4/add
-		return "/mform";
+		return "redirect:/list";
 		
 	}	
 	
 	//삭제폼(삭제랑 헷갈리지 말것) 폼만 보여주면 됨
 	@RequestMapping(value="/wform",method = {RequestMethod.GET,RequestMethod.POST})
 	public String writeForm() {
-		System.out.println("Personcontroller.writeForm");
+		System.out.println("Personcontroller.writeForm()");
 
 		return "wform";
 	}
@@ -72,10 +69,8 @@ public class Personcontroller {
 		System.out.println("Personcontroller.mform()");
 		System.out.println(phonebookVO);
 		
-		PhonebookDAO phonebookDAO = new PhonebookDAO();
-		int a = phonebookDAO.phonebookDelete(phonebookVO);
-		System.out.println(a);
+		personService.exePhonebookRemove(phonebookVO);
 		
-		return "/mform";
+		return "redirect:/add";
 	}	
 }
