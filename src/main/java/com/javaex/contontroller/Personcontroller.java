@@ -51,13 +51,13 @@ public class Personcontroller {
 	}
 	
 	//--등록
-	//-방명록 글 저장
-	@RequestMapping(value="/add",method= {RequestMethod.GET,RequestMethod.POST})
+	@RequestMapping(value="/add", method= {RequestMethod.GET, RequestMethod.POST})
 	public String add(@ModelAttribute PersonVO personVO) {
-	
-		//Service 한테 시키는 일
-		personService.exePhonebookAdd(personVO);
-		
-		return "redirect:/list";
+		System.out.println("PhonebookController.add()");
+
+		phonebookService.exeAdd(personVO);
+		//http://localhost:8888/p4/list
+
+		return "";
 	}
 }
