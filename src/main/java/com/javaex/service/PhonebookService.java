@@ -35,4 +35,10 @@ public class PhonebookService {
 		return personVO;
 	}
 	
+	//등록
+	public String exePhonebookAdd(PersonVO personVO) {
+		System.out.println("PhonebookService.exePhonebookAdd(등록)");
+		return "";
+	}
+	
 }

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -50,6 +51,13 @@ public class Personcontroller {
 	}
 	
 	//--등록
+	//-방명록 글 저장
+	@RequestMapping(value="/add",method= {RequestMethod.GET,RequestMethod.POST})
+	public String add(@ModelAttribute PersonVO personVO) {
 	
-	
+		//Service 한테 시키는 일
+		personService.exePhonebookAdd(personVO);
+		
+		return "redirect:/list";
+	}
 }
