@@ -73,7 +73,7 @@
 		</dependency>
 		<!--MySQL Driver-->
 		
-		<!--mybatis-->
+		<!--mybatis 시작-->
 		<dependency>
 		    <groupId>org.mybatis.spring.boot</groupId>
 		    <artifactId>mybatis-spring-boot-starter</artifactId>
@@ -86,7 +86,7 @@
 		    <version>3.0.3</version>
 		    <scope>test</scope>
 		</dependency>
-		<!--mybatis-->
+		<!--mybatis 끝-->
 		
 		<!--devtools-->
 	 	<dependency>
