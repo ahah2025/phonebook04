@@ -18,7 +18,6 @@ public class Personcontroller {
 
 	//필드
 	@Autowired
-	private PhonebookService personService;
 	private PhonebookService phonebookService;
 	
 	//메소드일반
@@ -27,7 +26,7 @@ public class Personcontroller {
 	public String list(Model model) {
 		System.out.println("Personcontroller.list()");
 		
-		List<PersonVO> personlist = personService.exeList();
+		List<PersonVO> personlist = phonebookService.exeList();
 		
 		model.addAttribute("phonebooklist",personlist);
 		
